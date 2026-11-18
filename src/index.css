@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --surface: 210 29% 95%;
+  --surface-elevated: 210 40% 99%;
+  --muted: 215 16% 42%;
+  --muted-on-dark: 215 20% 74%;
+  --border: 214 22% 86%;
+  --border-on-dark: 217 28% 22%;
+  --primary: 222 47% 11%;
+  --primary-hover: 222 44% 17%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 28% 93%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 217 25% 24%;
+  --accent-foreground: 210 40% 98%;
+  --whatsapp: 145 63% 36%;
+  --whatsapp-foreground: 210 40% 98%;
+
+  --gradient-architectural: linear-gradient(
+    145deg,
+    hsl(222 47% 11%) 0%,
+    hsl(219 39% 16%) 55%,
+    hsl(222 47% 9%) 100%
+  );
+  --gradient-mist: linear-gradient(
+    180deg,
+    hsl(210 40% 98%) 0%,
+    hsl(210 29% 95%) 100%
+  );
+  --gradient-scrim: linear-gradient(
+    180deg,
+    hsl(222 47% 11% / 0) 30%,
+    hsl(222 47% 11% / 0.45) 68%,
+    hsl(222 47% 11% / 0.88) 100%
+  );
+
+  --shadow-hairline: 0 1px 2px 0 hsl(222 47% 11% / 0.04);
+  --shadow-card: 0 10px 30px -12px hsl(222 47% 11% / 0.08), 0 2px 6px -2px hsl(222 47% 11% / 0.04);
+  --shadow-editorial: 0 24px 54px -16px hsl(222 47% 11% / 0.14), 0 6px 16px -6px hsl(222 47% 11% / 0.06);
+  --shadow-float: 0 12px 28px -6px hsl(222 47% 11% / 0.28);
+}
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Lato", system-ui, -apple-system, sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-surface: hsl(var(--surface));
+  --color-surface-elevated: hsl(var(--surface-elevated));
+  --color-muted: hsl(var(--muted));
+  --color-muted-on-dark: hsl(var(--muted-on-dark));
+  --color-border: hsl(var(--border));
+  --color-border-on-dark: hsl(var(--border-on-dark));
+  --color-primary: hsl(var(--primary));
+  --color-primary-hover: hsl(var(--primary-hover));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-whatsapp: hsl(var(--whatsapp));
+  --color-whatsapp-foreground: hsl(var(--whatsapp-foreground));
+}
+
+@layer base {
+  html {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+.bg-architectural-gradient {
+  background-image: var(--gradient-architectural);
+}
+
+.bg-mist-gradient {
+  background-image: var(--gradient-mist);
+}
+
+.bg-editorial-scrim {
+  background-image: var(--gradient-scrim);
+}
+
+.shadow-hairline {
+  box-shadow: var(--shadow-hairline);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-editorial {
+  box-shadow: var(--shadow-editorial);
+}
+
+.shadow-float {
+  box-shadow: var(--shadow-float);
+}
+
+.architectural-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.38;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0;
+  }
+}
+
+.animate-whatsapp-pulse {
+  animation: subtlePulse 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-whatsapp-pulse {
+    animation: none;
+  }
+}
